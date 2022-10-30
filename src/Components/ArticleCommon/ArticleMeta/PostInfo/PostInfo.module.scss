@@ -1,0 +1,27 @@
+@import '../../../../styles/variables';
+.userInfo {
+  display: flex;
+}
+.userIcon {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  &_line {
+    align-items: center;
+    flex-direction: unset;
+  }
+}
+.userName {
+  color: $green;
+  margin-left: 0.5rem;
+}
+.date {
+  font-size: 0.9rem;
+  color: $light_gray;
+  margin-left: 0.5rem;
+}

@@ -1,0 +1,11 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+.tag_list {
+  display: flex;
+  color: $light_gray;
+}
+.tag {
+  cursor: pointer;
+  border: 2px solid;
+  @include tag;
+}

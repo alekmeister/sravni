@@ -1,0 +1,9 @@
+@mixin tag {
+  cursor: pointer;
+  border-radius: 10rem;
+  font-size: 1.1rem;
+  padding: 0.2rem 0.8rem;
+  white-space: nowrap;
+  margin-right: 5px;
+  margin-bottom: 0.4rem;
+}

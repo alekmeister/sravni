@@ -3,6 +3,7 @@ body {
   font-family: 'Source Serif Pro', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 19px;
 }
 
 code {
@@ -13,6 +14,19 @@ code {
 *:before,
 *:after {
   box-sizing: border-box;
+}
+li {
+  list-style-type: none;
+}
+ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+p {
+  margin: 0;
+}
+*, a:focus {
+  outline: none
 }
 
 h1,

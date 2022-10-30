@@ -1,0 +1,45 @@
+@import 'src/styles/variables';
+.auth {
+}
+.container {
+  margin: 0 auto;
+  width: 540px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container > * {
+  margin-bottom: 1rem;
+}
+.field {
+  width: inherit;
+  border: $light_gray 2px solid;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+  border-radius: 0.3rem;
+  outline-color: $green;
+  outline-width: 1px;
+  &::placeholder {
+    color: $light_gray;
+    font-size: 1.1rem;
+  }
+}
+
+.title {
+  font-weight: 500;
+}
+
+.link {
+  color: $green;
+  &:hover {
+    text-decoration: 1px solid;
+    opacity: 0.3;
+  }
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}

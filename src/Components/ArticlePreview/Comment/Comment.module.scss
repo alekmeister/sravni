@@ -1,0 +1,14 @@
+@import 'src/styles/variables';
+
+.comment {
+  border: 1px solid $light_gray;
+}
+.text {
+  padding: 1.5rem;
+  border-bottom: 1px solid $light_gray;
+}
+
+.author {
+  padding: 1rem 1.5rem;
+  background-color: $semi-white;
+}

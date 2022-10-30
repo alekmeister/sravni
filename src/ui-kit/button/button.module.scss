@@ -1,0 +1,51 @@
+@import 'src/styles/variables';
+.button {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  background-color: rgba(28, 28, 28, 0);
+}
+
+.button_inner {
+  display: flex;
+}
+
+.icon {
+  &_like {
+    margin: auto 5px auto 0;
+    width: 15px;
+    height: 15px;
+    fill: $green;
+  }
+  &_follow {
+    margin: auto 5px auto 0;
+    width: 15px;
+    height: 15px;
+    fill: $light_gray;
+  }
+}
+
+.like,
+.empty {
+  color: $green;
+  border: 2px $green solid;
+  &:hover {
+    color: $white;
+    background-color: $green;
+  }
+  &:hover .icon_like {
+    fill: $white;
+  }
+}
+
+.follow {
+  color: $light_gray;
+  border: 2px $light_gray solid;
+  &:hover {
+    color: $white;
+    background-color: $light_gray;
+  }
+  &:hover .icon_follow {
+    fill: $white;
+  }
+}

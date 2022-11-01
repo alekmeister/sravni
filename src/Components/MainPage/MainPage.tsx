@@ -1,38 +1,45 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
 import { Banner } from 'Components/Banner';
 import { useAppDispatch, useAppSelector } from 'store/types';
-import { getAllArticles } from 'store/articles/actionCreators/getArticles';
+import { getArticles } from 'store/mainPage/articles/actionCreators/getArticles';
 import { Article } from 'Components/Feed/Article';
-import { getPopularTags } from 'store/articles/actionCreators/getPopularTags';
+import { getPopularTags } from 'store/mainPage/articles/actionCreators/getPopularTags';
 import { REQUEST_STATUS } from 'types/RequestStatuses';
 import { Preloader } from 'ui-kit/Preloader';
 import { Pagination } from '@mui/material';
 import { v4 as uuid } from 'uuid';
 import cn from 'classnames';
+import { useAuth } from 'hooks/use-auth';
 import style from './MainPage.module.scss';
 
 export const MainPage: FC = () => {
   const [pageQty, setPageQty] = useState(1);
   const [page, setPage] = useState(1);
   const [activeTag, setActiveTag] = useState('');
+  // Почему status ?
   const { status: articlesLoadingStatus, articles, articlesCount } = useAppSelector((state) => state.articles);
 
   const { status: tagsLoadingStatus, popularTags } = useAppSelector((state) => state.tags);
   const isLoadingArticles = articlesLoadingStatus === REQUEST_STATUS.LOADING;
   const isLoadingTags = tagsLoadingStatus === REQUEST_STATUS.LOADING;
   const dispatch = useAppDispatch();
-  // 2 запроса уходят из-за articlesCount
+
   useEffect(() => {
-    dispatch(getAllArticles({ offset: Number(`${page - 1}${0}`), tag: activeTag }));
-    dispatch(getPopularTags());
-    setPageQty(Math.ceil(articlesCount / 10));
-    setPage(1);
+    dispatch(getArticles({ offset: Number(`${page - 1}${0}`), limit: 10, tag: activeTag }));
     window.scrollTo(0, 0);
-  }, [page, articlesCount, activeTag]);
+  }, [page, activeTag]);
+
+  useEffect(() => {
+    dispatch(getPopularTags());
+  }, []);
+
+  useEffect(() => {
+    setPageQty(Math.ceil(articlesCount / 10));
+  }, [articlesCount]);
 
   return (
     <>
-      <Banner />
+      {useAuth() ? null : <Banner />}
       <div className={style.container}>
         <div className={style.feedMain}>
           <div className={style.feeds}>
@@ -54,7 +61,14 @@ export const MainPage: FC = () => {
               {isLoadingTags && <Preloader />}
               <ul className={style.tag_list}>
                 {popularTags.map((tag) => (
-                  <li className={cn(style.tag, { [style.tag_active]: activeTag === tag })} key={uuid()} onClick={() => setActiveTag(tag)}>
+                  <li
+                    className={cn(style.tag, { [style.tag_active]: activeTag === tag })}
+                    key={uuid()}
+                    onClick={() => {
+                      setActiveTag(tag);
+                      setPage(1);
+                    }}
+                  >
                     {tag}
                   </li>
                 ))}

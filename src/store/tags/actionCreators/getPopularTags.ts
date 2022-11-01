@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { SLICE_NAME } from 'store/articles/constants';
+import { SLICE_NAME } from 'store/mainPage/articles/constants';
 import axios from 'axios';
 import { baseApiUrl } from 'config/api';
 

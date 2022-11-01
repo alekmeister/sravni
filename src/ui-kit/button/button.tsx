@@ -8,9 +8,10 @@ interface ButtonProps {
   type?: 'submit' | 'reset' | 'button';
   destination: 'like' | 'follow' | 'empty';
   children: React.ReactNode;
+  onClick?: any;
 }
 
-export const Button: FC<ButtonProps> = ({ type = 'button', destination = 'like', children }) => {
+export const Button: FC<ButtonProps> = ({ type = 'button', destination = 'like', children, onClick }) => {
   const mainCn = cn(style.button, style[destination]);
   let icon;
   switch (destination) {
@@ -28,7 +29,7 @@ export const Button: FC<ButtonProps> = ({ type = 'button', destination = 'like',
   }
   return (
     // eslint-disable-next-line react/button-has-type
-    <button className={mainCn} type={type}>
+    <button className={mainCn} type={type} onClick={onClick}>
       <div className={style.button_inner}>
         {icon}
         <span> {children}</span>

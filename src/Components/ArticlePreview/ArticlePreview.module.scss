@@ -1,11 +1,25 @@
 @import 'src/styles/variables';
 .articlePreview {
 }
+.articleBanner {
+  background-color: #333;
+  color: $white;
+  padding: 3rem;
+}
+.container_banner {
+  margin: 0 auto;
+  width: 1440px;
+}
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
 .description {
   width: 1440px;
   margin: 0 auto;
 }
-.text {
+.body {
   margin: 2rem 0;
   font-size: 1.5rem;
   line-height: 1.8rem;
@@ -21,6 +35,6 @@
   padding: 0 15rem 2rem;
 }
 
-.container {
+.container_comments > * {
   margin-top: 2rem;
 }

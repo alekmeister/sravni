@@ -1,11 +1,12 @@
 import { REQUEST_STATUS } from 'types/RequestStatuses';
 import { createSlice } from '@reduxjs/toolkit';
 import { SLICE_NAME } from 'store/mainPage/articles/constants';
-import { State } from 'store/tags/types';
-import { getPopularTags } from 'store/mainPage/articles/actionCreators/getPopularTags';
+import { State } from 'store/mainPage/articles/types';
+import { getArticles } from 'store/mainPage/articles/actionCreators/getArticles';
 
 const getInitialState = (): State => ({
-  popularTags: [],
+  articles: [],
+  articlesCount: 0,
   status: REQUEST_STATUS.PENDING,
 });
 
@@ -14,14 +15,15 @@ const slice = createSlice({
   initialState: getInitialState(),
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getPopularTags.pending, (state) => {
+    builder.addCase(getArticles.pending, (state) => {
       state.status = REQUEST_STATUS.LOADING;
     });
-    builder.addCase(getPopularTags.fulfilled, (state, action) => {
-      state.popularTags = action.payload.tags;
+    builder.addCase(getArticles.fulfilled, (state, action) => {
+      state.articles = action.payload.articles;
+      state.articlesCount = action.payload.articlesCount;
       state.status = REQUEST_STATUS.SUCCESS;
     });
-    builder.addCase(getPopularTags.rejected, (state) => {
+    builder.addCase(getArticles.rejected, (state) => {
       state.status = REQUEST_STATUS.ERROR;
     });
   },

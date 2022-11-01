@@ -1,11 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import articlesSlice from 'store/articles/slice';
-import tagsSlice from 'store/tags/slice';
+import articlesReducer from 'store/mainPage/articles/slice';
+import tagsReducer from 'store/tags/slice';
+import commentsReducer from 'store/comments/slice';
+import userReducer from 'store/auth/slice';
+import articlePreviewReducer from 'store/articlePreview/slice';
 
 export const store = configureStore({
   reducer: {
-    articles: articlesSlice,
-    tags: tagsSlice,
+    articlePreview: articlePreviewReducer,
+    articles: articlesReducer,
+    comments: commentsReducer,
+    tags: tagsReducer,
+    user: userReducer,
   },
 });
 

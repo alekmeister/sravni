@@ -11,7 +11,9 @@ const App = () => {
     <Routes>
       <Route path="/" element={<OutletPage />}>
         <Route index element={<MainPage />} />
-        <Route path="article" element={<ArticlePreview />} />
+        <Route path="article">
+          <Route path=":qrySlug" element={<ArticlePreview />} />
+        </Route>
         <Route path="login" element={<Auth typeAuth="login" />} />
         <Route path="registration" element={<Auth typeAuth="registration" />} />
       </Route>

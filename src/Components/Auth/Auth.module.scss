@@ -30,9 +30,10 @@
   font-weight: 500;
 }
 
-.link {
+.text {
   color: $green;
   &:hover {
+    cursor: pointer;
     text-decoration: 1px solid;
     opacity: 0.3;
   }

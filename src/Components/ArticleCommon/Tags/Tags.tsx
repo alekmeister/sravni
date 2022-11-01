@@ -10,7 +10,7 @@ export const Tags: FC<TagsProps> = ({ tagList }) => {
     <ul className={style.tag_list}>
       {tagList.map((tag) => (
         <li className={style.tag} key={uuid()}>
-          {tag}{' '}
+          {tag}
         </li>
       ))}
     </ul>

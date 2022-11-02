@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { SLICE_NAME } from 'store/mainPage/articles/constants';
-import { baseApiUrl } from 'config/api';
+import { baseApiUrl } from 'config/settings';
 import { ArticleInterface } from 'types/ArticleInterface';
 
 interface In {

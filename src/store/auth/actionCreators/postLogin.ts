@@ -1,15 +1,11 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { baseApiUrl } from 'config/api';
+import { baseApiUrl } from 'config/settings';
 import { SLICE_NAME } from 'store/auth/constants';
-import { UserAuthInterface } from 'types/UserAuthInterface';
+import { AuthFields, UserAuthInterface } from 'types/UserAuthInterface';
 
 interface In {
-  user: {
-    username?: string;
-    email: string;
-    password: string;
-  };
+  user: AuthFields;
 }
 
 interface Out {
@@ -18,7 +14,6 @@ interface Out {
 
 export const postLogin = createAsyncThunk<Out, In>(`${SLICE_NAME}/fetchComments`, async (user) => {
   const qryRegistration = user.user.username ? '' : '/login';
-  console.log(user.user.username);
   try {
     const response = await axios.post(`${baseApiUrl}/users${qryRegistration}`, user);
     return response.data;

@@ -5,3 +5,9 @@ export type UserAuthInterface = {
   image: string;
   token: string;
 };
+
+export type AuthFields = {
+  username?: string;
+  email: string;
+  password: string;
+};

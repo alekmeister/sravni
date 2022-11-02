@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { SLICE_NAME } from 'store/mainPage/articles/constants';
 import axios from 'axios';
-import { baseApiUrl } from 'config/api';
+import { baseApiUrl } from 'config/settings';
 
 interface Out {
   tags: string[];

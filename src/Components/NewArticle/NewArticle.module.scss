@@ -1,0 +1,31 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.container > * {
+  margin-top: 2rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1140px;
+}
+.container textarea {
+  height: 10rem;
+  font-family: $font_primary;
+}
+
+.field {
+  @include field;
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.valid {
+  color: red;
+}

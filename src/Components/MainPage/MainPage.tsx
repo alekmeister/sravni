@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Banner } from 'Components/Banner';
 import { useAppDispatch, useAppSelector } from 'store/types';
 import { getArticles } from 'store/mainPage/articles/actionCreators/getArticles';
@@ -39,7 +39,7 @@ export const MainPage: FC = () => {
 
   return (
     <>
-      {useAuth() ? null : <Banner />}
+      {useAuth().isAuth ? null : <Banner />}
       <div className={style.container}>
         <div className={style.feedMain}>
           <div className={style.feeds}>

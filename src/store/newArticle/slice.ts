@@ -1,35 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { UserAuthInterface } from 'types/UserAuthInterface';
 import { REQUEST_STATUS } from 'types/RequestStatuses';
-import { postLogin } from 'store/auth/actionCreators/postLogin';
+import { ArticleInterface } from 'types/ArticleInterface';
 import { State } from './types';
+import { postCreateArticle } from './actionCreators/postCreateArticle';
 
 const getInitialState = (): State => ({
-  user: {} as UserAuthInterface,
+  createdArticle: {} as ArticleInterface,
   status: REQUEST_STATUS.PENDING,
 });
 
 const slice = createSlice({
-  name: 'user',
+  name: 'newArticle',
   initialState: getInitialState(),
   reducers: {
-    logOut(state) {
-      state.user = {} as UserAuthInterface;
+    changeStatus(state) {
       state.status = REQUEST_STATUS.PENDING;
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(postLogin.pending, (state) => {
+    builder.addCase(postCreateArticle.pending, (state) => {
       state.status = REQUEST_STATUS.LOADING;
     });
-    builder.addCase(postLogin.fulfilled, (state, action) => {
-      state.user = action.payload.user;
+    builder.addCase(postCreateArticle.fulfilled, (state, action) => {
+      state.createdArticle = action.payload.article;
       state.status = REQUEST_STATUS.SUCCESS;
     });
-    builder.addCase(postLogin.rejected, (state) => {
+    builder.addCase(postCreateArticle.rejected, (state) => {
       state.status = REQUEST_STATUS.ERROR;
     });
   },
 });
-export const { logOut } = slice.actions;
+export const { changeStatus } = slice.actions;
 export default slice.reducer;

@@ -12,3 +12,5 @@ export interface ArticleInterface {
   favoritesCount: number;
   author: AuthorInterface;
 }
+
+export type createNewArticle = Pick<ArticleInterface, 'title' | 'tagList' | 'description' | 'body'>;

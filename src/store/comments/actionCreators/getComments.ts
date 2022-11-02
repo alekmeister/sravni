@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { baseApiUrl } from 'config/api';
+import { baseApiUrl } from 'config/settings';
 import { CommentInterface } from 'types/CommentInterface';
 import { SLICE_NAME } from 'store/comments/constants';
 

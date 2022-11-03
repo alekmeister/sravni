@@ -7,7 +7,6 @@ import type { State } from './types';
 
 const getInitialState = (): State => ({
   user: null,
-  error: null,
   status: REQUEST_STATUS.PENDING,
 });
 
@@ -20,9 +19,6 @@ const slice = createSlice({
       TokenService.deleteLocalAccessToken();
       state.status = REQUEST_STATUS.PENDING;
     },
-    setError(state, { payload }) {
-      state.error = payload;
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(postLogin.pending, (state) => {
@@ -30,7 +26,6 @@ const slice = createSlice({
     });
     builder.addCase(postLogin.fulfilled, (state, { payload }) => {
       state.user = payload.user;
-      state.error = null;
       state.status = REQUEST_STATUS.SUCCESS;
     });
     builder.addCase(postLogin.rejected, (state) => {
@@ -38,5 +33,5 @@ const slice = createSlice({
     });
   },
 });
-export const { logOut, setError } = slice.actions;
+export const { logOut } = slice.actions;
 export default slice.reducer;

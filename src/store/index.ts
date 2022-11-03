@@ -5,11 +5,13 @@ import commentsReducer from 'store/comments/slice';
 import userReducer from 'store/auth/slice';
 import articlePreviewReducer from 'store/articlePreview/slice';
 import newArticleReducer from 'store/newArticle/slice';
+import serverErrorReducer from 'store/serverError/slice';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 const rootReducer = combineReducers({
   articlePreview: articlePreviewReducer,
+  serverError: serverErrorReducer,
   newArticle: newArticleReducer,
   articles: articlesReducer,
   comments: commentsReducer,

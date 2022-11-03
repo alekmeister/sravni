@@ -55,10 +55,10 @@ export const Auth: FC<AuthProps> = ({ typeAuthProps }) => {
         <Formik initialValues={currentInitValues} validationSchema={currentValidSchema} onSubmit={(values) => handleLogin(values)}>
           <Form className={style.form}>
             {currentForm.map(({ name, placeholder, type }) => (
-              <div key={uuid()}>
+              <>
                 <Field className={style.field} type={type} placeholder={placeholder} name={name} />
                 <ErrorMessage className={style.valid} name={name} component="span" />
-              </div>
+              </>
             ))}
             {isError ? <div className={style.valid}>{errorMsg}</div> : null}
             <div className={style.btn}>

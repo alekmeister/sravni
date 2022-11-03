@@ -14,12 +14,12 @@ export const formLogin: FormikField[] = [
 
 export const loginPage = {
   title: 'Sign in',
-  route: '/registration',
+  route: 'sravni/registration',
   text: 'Need an account?',
 };
 export const registrationPage = {
   title: 'Sign up',
-  route: '/login',
+  route: 'sravni/login',
   text: 'Have an account?',
 };
 

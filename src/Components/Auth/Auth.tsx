@@ -35,7 +35,7 @@ export const Auth: FC<AuthProps> = ({ typeAuthProps }) => {
   };
   useEffect(() => {
     if (statusLogin === REQUEST_STATUS.SUCCESS) {
-      navigate('/');
+      navigate('/sravni');
     }
   }, [statusLogin]);
 

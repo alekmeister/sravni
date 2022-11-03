@@ -32,7 +32,7 @@ export const NewArticle: FC = () => {
 
   useEffect(() => {
     if (status === REQUEST_STATUS.SUCCESS) {
-      navigate('/');
+      navigate('/sravni');
     }
   }, [status]);
 

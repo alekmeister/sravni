@@ -22,16 +22,16 @@ export const Header: FC = () => {
   const handleLogOut = () => {
     dispatch(logOut());
     setOpenMenu(false);
-    navigate('/');
+    navigate('/sravni');
   };
 
   return (
     <nav className={style.header}>
-      <Link to="/" className={style.logo}>
+      <Link to="/sravni" className={style.logo}>
         conduit
       </Link>
       <ul className={style.auth}>
-        <Link to="/" className={style.nav_item}>
+        <Link to="/sravni" className={style.nav_item}>
           Home
         </Link>
         {isAuthedUser(user) ? (

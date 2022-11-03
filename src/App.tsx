@@ -12,7 +12,7 @@ import { ArticlePreview } from 'components/ArticlePreview';
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<OutletPage />}>
+      <Route path="/sravni" element={<OutletPage />}>
         <Route index element={<MainPage />} />
         <Route path="article">
           <Route path=":qrySlug" element={<ArticlePreview />} />
@@ -27,7 +27,7 @@ const App = () => {
         />
         <Route path="login" element={<Auth typeAuthProps="login" />} />
         <Route path="registration" element={<Auth typeAuthProps="registration" />} />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="/sravni/*" element={<ErrorPage />} />
       </Route>
     </Routes>
   );

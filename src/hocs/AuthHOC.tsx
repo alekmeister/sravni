@@ -8,7 +8,7 @@ export const AuthHOC = ({ children }: { children: React.ReactElement }): React.R
   const user = useAuth();
 
   if (!isAuthedUser(user)) {
-    return <Navigate to="/" state={{ from: location }} />;
+    return <Navigate to="/sravni" state={{ from: location }} />;
   }
   return children;
 };

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { SLICE_NAME } from 'store/auth/constants';
+import { SLICE_NAME } from 'store/serverError/constants';
 import type { State } from './types';
 
 const getInitialState = (): State => ({

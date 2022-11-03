@@ -9,7 +9,8 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import type { AuthFields } from 'types/UserAuthInterface';
 import { Preloader } from 'ui-kit/Preloader';
 import { formLogin, formRegistration, loginInitValues, loginPage, loginValidSchema, regInitValues, registrationPage, regValidSchema } from 'components/Auth/formsData';
-import { selectAuthStatus, selectServerErr } from 'store/auth';
+import { selectAuthStatus } from 'store/auth';
+import { selectServerError } from 'store/serverError';
 import style from './Auth.module.scss';
 
 interface AuthProps {
@@ -18,7 +19,7 @@ interface AuthProps {
 
 export const Auth: FC<AuthProps> = ({ typeAuthProps }) => {
   const statusLogin = useAppSelector(selectAuthStatus);
-  const errorMsg = useAppSelector(selectServerErr);
+  const errorMsg = useAppSelector(selectServerError);
   const isLoading = statusLogin === REQUEST_STATUS.LOADING;
   const isError = statusLogin === REQUEST_STATUS.ERROR;
   const dispatch = useAppDispatch();

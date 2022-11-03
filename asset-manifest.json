@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/sravni/static/css/main.89ed8ae4.css",
-    "main.js": "/sravni/static/js/main.3d77fbb1.js",
+    "main.css": "/sravni/static/css/main.adfda132.css",
+    "main.js": "/sravni/static/js/main.c40979ad.js",
     "static/media/1.sm.webp": "/sravni/static/media/1.sm.4ceef3e9a913cf95f80a.webp",
-    "static/media/preloader.svg": "/sravni/static/media/preloader.e083777815129195f11a314f77ce8f9b.svg",
+    "static/media/preloader.svg": "/sravni/static/media/preloader.6aaff7713158752f9c066a04ab511ebb.svg",
     "index.html": "/sravni/index.html",
-    "static/media/heart.svg": "/sravni/static/media/heart.f148b586f6ae44f381c1d10aad3878f7.svg",
-    "static/media/plus.svg": "/sravni/static/media/plus.3937600a4147c0978cc567a54461bf2b.svg",
-    "main.89ed8ae4.css.map": "/sravni/static/css/main.89ed8ae4.css.map",
-    "main.3d77fbb1.js.map": "/sravni/static/js/main.3d77fbb1.js.map"
+    "static/media/heart.svg": "/sravni/static/media/heart.cffe75cea800e9d9d42fce73f1029682.svg",
+    "static/media/plus.svg": "/sravni/static/media/plus.fef269e19041b2c11d0ffbd4b1e80128.svg",
+    "main.adfda132.css.map": "/sravni/static/css/main.adfda132.css.map",
+    "main.c40979ad.js.map": "/sravni/static/js/main.c40979ad.js.map"
   },
   "entrypoints": [
-    "static/css/main.89ed8ae4.css",
-    "static/js/main.3d77fbb1.js"
+    "static/css/main.adfda132.css",
+    "static/js/main.c40979ad.js"
   ]
 }

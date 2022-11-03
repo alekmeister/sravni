@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Button } from 'ui-kit/Button';
-import { AuthorInterface } from 'types/AuthorInterface';
+import type { AuthorInterface } from 'types/AuthorInterface';
 import { PostInfo } from './PostInfo';
 import style from './ArticleMeta.module.scss';
 
@@ -16,10 +16,10 @@ export const ArticleMeta: FC<ArticleMetaProps> = ({ author, date }) => {
         <PostInfo display="column" date={date} author={author} />
       </span>
       <span className={style.btn}>
-        <Button destination="follow">Follow Magda Parry</Button>
+        <Button destination="follow">Follow {author.username}</Button>
       </span>
       <span className={style.btn}>
-        <Button destination="like">Favorite Article(68)</Button>
+        <Button destination="like">Favorite Article</Button>
       </span>
     </div>
   );

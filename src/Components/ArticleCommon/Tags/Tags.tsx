@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { ArticleInterface } from 'types/ArticleInterface';
+import type { ArticleInterface } from 'types/ArticleInterface';
 import { v4 as uuid } from 'uuid';
 import style from './Tags.module.scss';
 

@@ -1,9 +1,7 @@
 import React, { FC } from 'react';
-import style from 'Components/Banner/Banner.module.scss';
+import style from 'components/MainPage/Banner/Banner.module.scss';
 
-interface BannerProps {}
-
-export const Banner: FC<BannerProps> = () => {
+export const Banner: FC = () => {
   return (
     <section className={style.banner}>
       <h1 className={style.title}>conduit</h1>

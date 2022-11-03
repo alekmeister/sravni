@@ -1,27 +1,34 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Banner } from 'Components/Banner';
+import { Banner } from 'components/MainPage/Banner';
 import { useAppDispatch, useAppSelector } from 'store/types';
-import { getArticles } from 'store/mainPage/articles/actionCreators/getArticles';
-import { Article } from 'Components/Feed/Article';
-import { getPopularTags } from 'store/mainPage/articles/actionCreators/getPopularTags';
+
+import { Article } from 'components/Feed/Article';
+
 import { REQUEST_STATUS } from 'types/RequestStatuses';
 import { Preloader } from 'ui-kit/Preloader';
 import { Pagination } from '@mui/material';
 import { v4 as uuid } from 'uuid';
 import cn from 'classnames';
-import { useAuth } from 'hooks/use-auth';
+import { isAuthedUser, useAuth } from 'hooks/use-auth';
+import { getArticles } from 'store/mainPage/articles/actionCreators/getArticles';
+import { getPopularTags } from 'store/tags/actionCreators/getPopularTags';
+import { selectArticlesState } from 'store/mainPage/articles/selectors';
+import { selectTagsState } from 'store/tags/selectors';
 import style from './MainPage.module.scss';
 
 export const MainPage: FC = () => {
   const [pageQty, setPageQty] = useState(1);
   const [page, setPage] = useState(1);
   const [activeTag, setActiveTag] = useState('');
-  // Почему status ?
-  const { status: articlesLoadingStatus, articles, articlesCount } = useAppSelector((state) => state.articles);
 
-  const { status: tagsLoadingStatus, popularTags } = useAppSelector((state) => state.tags);
-  const isLoadingArticles = articlesLoadingStatus === REQUEST_STATUS.LOADING;
+  const user = useAuth();
+
+  const { status, articles, articlesCount } = useAppSelector(selectArticlesState);
+  const { status: tagsLoadingStatus, popularTags } = useAppSelector(selectTagsState);
+
+  const isLoadingArticles = status === REQUEST_STATUS.LOADING;
   const isLoadingTags = tagsLoadingStatus === REQUEST_STATUS.LOADING;
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -39,7 +46,7 @@ export const MainPage: FC = () => {
 
   return (
     <>
-      {useAuth().isAuth ? null : <Banner />}
+      {isAuthedUser(user) ? null : <Banner />}
       <div className={style.container}>
         <div className={style.feedMain}>
           <div className={style.feeds}>

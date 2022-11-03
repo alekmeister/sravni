@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { v4 as uuid } from 'uuid';
-import { PostInfo } from 'Components/ArticleCommon/ArticleMeta/PostInfo';
+import { PostInfo } from 'components/ArticleCommon/ArticleMeta/PostInfo';
 import { Button } from 'ui-kit/Button';
-import { Tags } from 'Components/ArticleCommon/Tags';
-import { ArticleInterface } from 'types/ArticleInterface';
+import { Tags } from 'components/ArticleCommon/Tags';
+import type { ArticleInterface } from 'types/ArticleInterface';
 import { Link } from 'react-router-dom';
 import style from './Article.module.scss';
 

@@ -1,7 +1,7 @@
 import { REQUEST_STATUS } from 'types/RequestStatuses';
 import { createSlice } from '@reduxjs/toolkit';
 import { SLICE_NAME } from 'store/mainPage/articles/constants';
-import { State } from 'store/mainPage/articles/types';
+import type { State } from 'store/mainPage/articles/types';
 import { getArticles } from 'store/mainPage/articles/actionCreators/getArticles';
 
 const getInitialState = (): State => ({

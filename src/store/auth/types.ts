@@ -1,7 +1,8 @@
 import { REQUEST_STATUS } from 'types/RequestStatuses';
-import { UserAuthInterface } from 'types/UserAuthInterface';
+import type { UserAuthInterface } from 'types/UserAuthInterface';
 
 export interface State {
-  user: UserAuthInterface;
+  error: null | string;
+  user: UserAuthInterface | null;
   status: REQUEST_STATUS;
 }

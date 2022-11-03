@@ -1,1 +1,1 @@
-export const SLICE_NAME = 'articlesByTag';
+export const SLICE_NAME = 'allArticles';

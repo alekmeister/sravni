@@ -1,1 +1,1 @@
-export * from 'Components/Feed/Article/Article';
+export { Article } from './Article';

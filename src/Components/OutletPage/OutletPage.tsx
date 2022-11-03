@@ -1,11 +1,9 @@
 import React, { FC } from 'react';
-import { Header } from 'Components/Header';
+import { Header } from 'components/Header';
 import { Outlet } from 'react-router-dom';
 import style from './OutletPage.module.scss';
 
-interface OutletPageProps {}
-
-export const OutletPage: FC<OutletPageProps> = () => {
+export const OutletPage: FC = () => {
   return (
     <>
       <div className={style.container}>

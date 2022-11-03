@@ -1,38 +1,35 @@
 import React, { FC } from 'react';
-import style from 'ui-kit/Button/Button.module.scss';
 import { ReactComponent as Heart } from 'assets/icons/heart.svg';
 import { ReactComponent as Plus } from 'assets/icons/plus.svg';
 import cn from 'classnames';
+import style from './Button.module.scss';
 
-interface ButtonProps {
-  type?: 'submit' | 'reset' | 'button';
+interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   destination: 'like' | 'follow' | 'empty';
   children: React.ReactNode;
-  onClick?: any;
 }
 
-export const Button: FC<ButtonProps> = ({ type = 'button', destination = 'like', children, onClick }) => {
-  const mainCn = cn(style.button, style[destination]);
-  let icon;
+const getIcon = (destination: ButtonProps['destination']) => {
   switch (destination) {
     case 'like':
-      icon = <Heart className={style.icon_like} />;
-      break;
+      return <Heart className={style.icon_like} />;
     case 'follow':
-      icon = <Plus className={style.icon_follow} />;
-      break;
+      return <Plus className={style.icon_follow} />;
     case 'empty':
-      icon = null;
-      break;
+      return null;
     default:
-      icon = null;
+      return null;
   }
+};
+
+export const Button: FC<ButtonProps> = ({ destination = 'like', children, ...rest }) => {
+  const mainCn = cn(style.button, style[destination]);
   return (
-    // eslint-disable-next-line react/button-has-type
-    <button className={mainCn} type={type} onClick={onClick}>
+    // eslint-disable-next-line react/jsx-props-no-spreading,react/button-has-type
+    <button className={mainCn} {...rest}>
       <div className={style.button_inner}>
-        {icon}
-        <span> {children}</span>
+        {getIcon(destination)}
+        <span>{children}</span>
       </div>
     </button>
   );

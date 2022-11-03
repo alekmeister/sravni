@@ -1,12 +1,9 @@
 import { useAppSelector } from 'store/types';
+import { selectUser } from 'store/auth';
+import type { UserAuthInterface } from 'types/UserAuthInterface';
+
+export const isAuthedUser = (user: UserAuthInterface | null): user is UserAuthInterface => !!user && 'email' in user;
 
 export const useAuth = () => {
-  const { email, token, username, image } = useAppSelector((state) => state.user.user);
-  return {
-    isAuth: !!email,
-    image,
-    email,
-    token,
-    username,
-  };
+  return useAppSelector(selectUser);
 };

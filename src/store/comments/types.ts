@@ -1,5 +1,5 @@
 import { REQUEST_STATUS } from 'types/RequestStatuses';
-import { CommentInterface } from 'types/CommentInterface';
+import type { CommentInterface } from 'types/CommentInterface';
 
 export interface State {
   comments: CommentInterface[];

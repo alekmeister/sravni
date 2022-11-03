@@ -1,1 +1,1 @@
-export const SLICE_NAME = 'Auth';
+export const SLICE_NAME = 'auth';

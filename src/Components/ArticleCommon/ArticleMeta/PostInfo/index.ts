@@ -1,1 +1,1 @@
-export * from 'Components/ArticleCommon/ArticleMeta/PostInfo/PostInfo';
+export { PostInfo } from './PostInfo';

@@ -1,29 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { UserAuthInterface } from 'types/UserAuthInterface';
 import { REQUEST_STATUS } from 'types/RequestStatuses';
 import { postLogin } from 'store/auth/actionCreators/postLogin';
-import { State } from './types';
+import { TokenService } from 'services';
+import { SLICE_NAME } from 'store/auth/constants';
+import type { State } from './types';
 
 const getInitialState = (): State => ({
-  user: {} as UserAuthInterface,
+  user: null,
+  error: null,
   status: REQUEST_STATUS.PENDING,
 });
 
 const slice = createSlice({
-  name: 'user',
+  name: SLICE_NAME,
   initialState: getInitialState(),
   reducers: {
     logOut(state) {
-      state.user = {} as UserAuthInterface;
+      state.user = null;
+      TokenService.deleteLocalAccessToken();
       state.status = REQUEST_STATUS.PENDING;
+    },
+    setError(state, { payload }) {
+      state.error = payload;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(postLogin.pending, (state) => {
       state.status = REQUEST_STATUS.LOADING;
     });
-    builder.addCase(postLogin.fulfilled, (state, action) => {
-      state.user = action.payload.user;
+    builder.addCase(postLogin.fulfilled, (state, { payload }) => {
+      state.user = payload.user;
+      state.error = null;
       state.status = REQUEST_STATUS.SUCCESS;
     });
     builder.addCase(postLogin.rejected, (state) => {
@@ -31,5 +38,5 @@ const slice = createSlice({
     });
   },
 });
-export const { logOut } = slice.actions;
+export const { logOut, setError } = slice.actions;
 export default slice.reducer;

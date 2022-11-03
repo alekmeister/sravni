@@ -1,28 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from 'types/RequestStatuses';
-import { ArticleInterface } from 'types/ArticleInterface';
-import { State } from './types';
+import type { State } from './types';
 import { postCreateArticle } from './actionCreators/postCreateArticle';
+import { SLICE_NAME } from './constants';
 
 const getInitialState = (): State => ({
-  createdArticle: {} as ArticleInterface,
   status: REQUEST_STATUS.PENDING,
 });
 
 const slice = createSlice({
-  name: 'newArticle',
+  name: SLICE_NAME,
   initialState: getInitialState(),
   reducers: {
-    changeStatus(state) {
-      state.status = REQUEST_STATUS.PENDING;
+    setInitialState() {
+      return getInitialState();
     },
   },
   extraReducers: (builder) => {
     builder.addCase(postCreateArticle.pending, (state) => {
       state.status = REQUEST_STATUS.LOADING;
     });
-    builder.addCase(postCreateArticle.fulfilled, (state, action) => {
-      state.createdArticle = action.payload.article;
+    builder.addCase(postCreateArticle.fulfilled, (state) => {
+      // state.createdArticle = action.payload.article;
       state.status = REQUEST_STATUS.SUCCESS;
     });
     builder.addCase(postCreateArticle.rejected, (state) => {
@@ -30,5 +29,5 @@ const slice = createSlice({
     });
   },
 });
-export const { changeStatus } = slice.actions;
+export const { setInitialState } = slice.actions;
 export default slice.reducer;

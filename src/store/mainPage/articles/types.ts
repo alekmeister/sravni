@@ -1,5 +1,5 @@
 import { REQUEST_STATUS } from 'types/RequestStatuses';
-import { ArticleInterface } from 'types/ArticleInterface';
+import type { ArticleInterface } from 'types/ArticleInterface';
 
 export interface State {
   articles: Array<ArticleInterface>;

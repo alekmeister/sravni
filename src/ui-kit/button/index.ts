@@ -1,1 +1,1 @@
-export * from 'ui-kit/Button/Button';
+export { Button } from './Button';

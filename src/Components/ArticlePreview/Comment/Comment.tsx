@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { PostInfo } from 'Components/ArticleCommon/ArticleMeta/PostInfo';
-import { AuthorInterface } from 'types/AuthorInterface';
+import { PostInfo } from 'components/ArticleCommon/ArticleMeta/PostInfo';
+import type { AuthorInterface } from 'types/AuthorInterface';
 import style from './Comment.module.scss';
 
 interface CommentProps {

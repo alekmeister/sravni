@@ -1,15 +1,16 @@
 import React, { FC, useRef, useState } from 'react';
-import style from 'Components/Header/Header.module.scss';
-import { Link } from 'react-router-dom';
-import { useAuth } from 'hooks/use-auth';
+import style from 'components/Header/Header.module.scss';
+import { Link, useNavigate } from 'react-router-dom';
+import { isAuthedUser, useAuth } from 'hooks/use-auth';
 import { Menu, MenuItem } from '@mui/material';
 import { useAppDispatch } from 'store/types';
 import { logOut } from 'store/auth/slice';
 
 export const Header: FC = () => {
   const ref = useRef(null);
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { username, isAuth, image } = useAuth();
+  const user = useAuth();
 
   const [isOpenMenu, setOpenMenu] = useState(false);
   const handleClick = () => {
@@ -21,6 +22,7 @@ export const Header: FC = () => {
   const handleLogOut = () => {
     dispatch(logOut());
     setOpenMenu(false);
+    navigate('/');
   };
 
   return (
@@ -32,7 +34,7 @@ export const Header: FC = () => {
         <Link to="/" className={style.nav_item}>
           Home
         </Link>
-        {isAuth ? (
+        {isAuthedUser(user) ? (
           <>
             <Link to="editor" className={style.nav_item}>
               New Article
@@ -41,8 +43,8 @@ export const Header: FC = () => {
               Settings
             </Link>
             <button className={style.nav_item} onClick={handleClick} ref={ref}>
-              <img className={style.user_icon} src={image} alt="user_icon" />
-              {username}
+              <img className={style.user_icon} src={user.image} alt="user_icon" />
+              {user.username}
             </button>
             <Menu anchorEl={ref.current} open={isOpenMenu} onClose={handleCloseModal}>
               <MenuItem onClick={handleLogOut}>Logout</MenuItem>

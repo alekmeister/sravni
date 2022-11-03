@@ -1,8 +1,8 @@
 import { REQUEST_STATUS } from 'types/RequestStatuses';
 import { createSlice } from '@reduxjs/toolkit';
-import { SLICE_NAME } from 'store/mainPage/articles/constants';
-import { State } from 'store/tags/types';
-import { getPopularTags } from 'store/mainPage/articles/actionCreators/getPopularTags';
+import type { State } from 'store/tags/types';
+import { SLICE_NAME } from './constants';
+import { getPopularTags } from './actionCreators/getPopularTags';
 
 const getInitialState = (): State => ({
   popularTags: [],

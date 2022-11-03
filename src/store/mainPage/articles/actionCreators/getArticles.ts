@@ -1,9 +1,8 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { SLICE_NAME } from 'store/mainPage/articles/constants';
-import { baseApiUrl } from 'config/settings';
-import { ArticleInterface } from 'types/ArticleInterface';
+import { axiosInstance } from 'config/settings';
+import type { ArticleInterface } from 'types/ArticleInterface';
 
 interface In {
   offset?: number;
@@ -21,7 +20,7 @@ export const getArticles = createAsyncThunk<Out, In>(`${SLICE_NAME}/fetchArticle
   const qryTag = tag ? `&tag=${tag}` : '';
   const qryLimit = typeof limit === 'number' ? `?limit=${limit}` : '';
   try {
-    const response = await axios.get(`${baseApiUrl}/articles${qryLimit}${qryOffset}${qryTag}`);
+    const response = await axiosInstance.get(`articles${qryLimit}${qryOffset}${qryTag}`);
     return response.data;
   } catch (e) {
     throw new Error(`Ошибка загрузки, ${e}`);

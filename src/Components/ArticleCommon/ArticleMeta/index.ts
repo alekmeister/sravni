@@ -1,1 +1,1 @@
-export * from './ArticleMeta';
+export { ArticleMeta } from './ArticleMeta';

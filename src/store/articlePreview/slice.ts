@@ -1,12 +1,11 @@
 import { REQUEST_STATUS } from 'types/RequestStatuses';
 import { createSlice } from '@reduxjs/toolkit';
-import { ArticleInterface } from 'types/ArticleInterface';
 import { getArticlePreview } from 'store/articlePreview/actionCreators/getArticlePreview';
 import { SLICE_NAME } from './constants';
-import { State } from './types';
+import type { State } from './types';
 
 const getInitialState = (): State => ({
-  articlePreview: {} as ArticleInterface,
+  articlePreview: null,
   status: REQUEST_STATUS.PENDING,
 });
 

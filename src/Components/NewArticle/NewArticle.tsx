@@ -6,11 +6,11 @@ import { REQUEST_STATUS } from 'types/RequestStatuses';
 import { Preloader } from 'ui-kit/Preloader';
 import { useNavigate } from 'react-router-dom';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { createNewArticle } from 'types/ArticleInterface';
+import type { createNewArticle } from 'types/ArticleInterface';
 import * as Yup from 'yup';
-import { changeStatus } from 'store/newArticle/slice';
 import { v4 as uuid } from 'uuid';
-import { FormikField } from 'types/FormikFields';
+import type { FormikField } from 'types/FormikFields';
+import { selectNewArticleStatus } from 'store/newArticle/selectors';
 import style from './NewArticle.module.scss';
 
 const formNewArticle: FormikField[] = [
@@ -21,19 +21,17 @@ const formNewArticle: FormikField[] = [
 ];
 
 export const NewArticle: FC = () => {
-  const status = useAppSelector((store) => store.newArticle.status);
+  const status = useAppSelector(selectNewArticleStatus);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const isLoading = status === REQUEST_STATUS.LOADING;
 
-  const handleChangeStatus = () => dispatch(changeStatus());
   const handleCreateArticle = (article: createNewArticle) => {
     dispatch(postCreateArticle({ article }));
   };
 
   useEffect(() => {
     if (status === REQUEST_STATUS.SUCCESS) {
-      handleChangeStatus();
       navigate('/');
     }
   }, [status]);
@@ -54,8 +52,7 @@ export const NewArticle: FC = () => {
           tagList: Yup.string().min(2, 'Минимум 2 символа').required('Обязательное поле'),
         })}
         onSubmit={(values) => {
-          const article = Object.assign(values);
-          article.tagList = article.tagList.trim().split(' ');
+          const article: createNewArticle = { ...values, tagList: values.tagList.trim().split(' ') };
           handleCreateArticle(article);
         }}
       >

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
-import { AuthorInterface } from 'types/AuthorInterface';
-import style from 'Components/ArticleCommon/ArticleMeta/PostInfo/PostInfo.module.scss';
+import type { AuthorInterface } from 'types/AuthorInterface';
+import style from 'components/ArticleCommon/ArticleMeta/PostInfo/PostInfo.module.scss';
 import icon from 'assets/images/1.sm.webp';
 
 interface PostInfoProps {

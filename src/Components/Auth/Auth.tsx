@@ -11,6 +11,7 @@ import { Preloader } from 'ui-kit/Preloader';
 import { formLogin, formRegistration, loginInitValues, loginPage, loginValidSchema, regInitValues, registrationPage, regValidSchema } from 'components/Auth/formsData';
 import { selectAuthStatus } from 'store/auth';
 import { selectServerError } from 'store/serverError';
+import { setError } from 'store/serverError/slice';
 import style from './Auth.module.scss';
 
 interface AuthProps {
@@ -39,6 +40,10 @@ export const Auth: FC<AuthProps> = ({ typeAuthProps }) => {
       navigate('/sravni');
     }
   }, [statusLogin]);
+
+  useEffect(() => {
+    dispatch(setError(null));
+  }, []);
 
   return (
     <div className={style.auth}>

@@ -20,7 +20,7 @@ export const Article: FC<ArticleProps> = ({ articles }) => {
             <PostInfo display="column" author={author} date={createdAt} />
             <Button destination="like"> {favoritesCount}</Button>
           </div>
-          <Link to={`/article/${slug}`} key={uuid()}>
+          <Link to={`article/${slug}`} key={uuid()}>
             <h1 className={style.content}>{title}</h1>
             <p className={style.description}>{description}</p>
             <div className={style.footer}>

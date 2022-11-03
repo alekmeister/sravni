@@ -29,6 +29,7 @@ const App = () => {
         <Route path="registration" element={<Auth typeAuthProps="registration" />} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
 };

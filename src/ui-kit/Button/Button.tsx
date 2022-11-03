@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { ReactComponent as Heart } from 'assets/icons/heart.svg';
 import { ReactComponent as Plus } from 'assets/icons/plus.svg';
 import cn from 'classnames';
-import style from './Button.module.scss';
+import style from 'ui-kit/Button/Button.module.scss';
 
 interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   destination: 'like' | 'follow' | 'empty';
@@ -25,7 +25,7 @@ const getIcon = (destination: ButtonProps['destination']) => {
 export const Button: FC<ButtonProps> = ({ destination = 'like', children, ...rest }) => {
   const mainCn = cn(style.button, style[destination]);
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading,react/button-has-type
+    // eslint-disable-next-line react/jsx-props-no-spreading,react/Button-has-type
     <button className={mainCn} {...rest}>
       <div className={style.button_inner}>
         {getIcon(destination)}
